@@ -1,19 +1,19 @@
 class Student:
     def __init__(self, name, grades):
         self.name = name
-        self.grades = grades
+        self.grades = grades if grades else []
 
     def average(self):
-        return sum(self.grades) / len(self.grades)  # BUG: crashes if grades is empty
+        return sum(self.grades) / len(self.grades) if self.grades else 0
 
     def highest(self):
-        return max(self.grades)  # BUG: crashes if grades is empty
+        return max(self.grades) if self.grades else 0
 
     def lowest(self):
-        return min(self.grades)  # BUG: crashes if grades is empty
+        return min(self.grades) if self.grades else 0
 
     def is_passing(self):
-        return self.average() > 40  # BUG: should be >= 40 not >
+        return self.average() >= 40
 
     def grade_letter(self):
         avg = self.average()
