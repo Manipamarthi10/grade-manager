@@ -4,16 +4,22 @@ class Student:
         self.grades = grades
 
     def average(self):
-        return sum(self.grades) / len(self.grades)  # BUG: crashes if grades is empty
+        if not self.grades:
+            return 0
+        return sum(self.grades) / len(self.grades)
 
     def highest(self):
-        return max(self.grades)  # BUG: crashes if grades is empty
+        if not self.grades:
+            return 0
+        return max(self.grades)
 
     def lowest(self):
-        return min(self.grades)  # BUG: crashes if grades is empty
+        if not self.grades:
+            return 0
+        return min(self.grades)
 
     def is_passing(self):
-        return self.average() > 40  # BUG: should be >= 40 not >
+        return self.average() >= 40
 
     def grade_letter(self):
         avg = self.average()
